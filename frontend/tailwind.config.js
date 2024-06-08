@@ -11,9 +11,9 @@ export default {
           contrastText: '#FFFFFF',
         },
         secondary: {
-          DEFAULT: '#CFFAFA',
+          DEFAULT: '#FAAD00',
           dark: '#53C2C2', //option two #2BB8B8
-          light: '#FAAD00',
+          light: '#CFFAFA',
         },
       },
     },

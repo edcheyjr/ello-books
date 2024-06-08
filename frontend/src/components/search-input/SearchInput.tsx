@@ -75,7 +75,7 @@ const SearchInput = () => {
             InputProps={{
               ...params.InputProps,
               startAdornment: (
-                <InputAdornment position='start'>
+                <InputAdornment position='start' className='ml-2'>
                   {' '}
                   <Search className='size-6 stroke-2 group-focus-within:text-primary' />{' '}
                 </InputAdornment>

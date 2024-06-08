@@ -1,9 +1,13 @@
 import React from 'react'
 
-type Props = { text: string }
+type Props = { children: string }
 
-const Title = ({ text }: Props) => {
-  return <h2 className='text-'>{text}</h2>
+const Title = ({ children }: Props) => {
+  return (
+    <h2 className='text-lg md:text-xl lg:text-3xl font-bold tracking-wide'>
+      {children}
+    </h2>
+  )
 }
 
 export default Title

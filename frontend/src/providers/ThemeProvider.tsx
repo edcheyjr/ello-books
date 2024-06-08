@@ -17,6 +17,9 @@ const theme = createTheme({
     primary: primaryPalette,
     secondary: secondaryPalette,
   },
+  typography: {
+    fontFamily: 'Mulish',
+  },
 })
 type Props = {
   children: React.ReactNode

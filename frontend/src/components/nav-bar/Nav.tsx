@@ -1,15 +1,15 @@
 import React from 'react'
 import Logo from '../Logo'
-import SearchInput from '../SearchInput'
+import SearchInput from '../search-input/SearchInput'
 import Profile from '../Profile'
 
 const Nav = () => {
   return (
-    <nav className='w-full py-4 flex justify-between items-center'>
+    <nav className='w-full flex justify-between items-center'>
       <Logo />
+      <div className=''>{/* Center */}</div>
       <div className='space-x-1 flex items-center'>
         {/* Right side */}
-        <SearchInput />
         <Profile />
       </div>
     </nav>

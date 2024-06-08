@@ -9,7 +9,7 @@ const UserIcon = () => {
       className='h-16 p-1 flex space-x-1 rounded-full items-center justify-center'
       onClick={() => console.log('Todo')}
     >
-      <Down className='size-4' />
+      <Down className='size-4 text-primary-dark' />
       <img src='../../assets/ello_elephant.png' alt='user' className='h-full' />
     </button>
   )

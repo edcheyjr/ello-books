@@ -2,7 +2,8 @@ import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { Book } from '../../types/book'
-
+import InputAdornment from '@mui/material/InputAdornment'
+import Search from '../../icons/Search'
 // type Props = {
 //   books: Book[]
 // }
@@ -34,7 +35,7 @@ const SearchInput = () => {
     },
   ]
   return (
-    <div>
+    <div className='group'>
       <Autocomplete
         size='medium'
         componentsProps={{
@@ -46,14 +47,22 @@ const SearchInput = () => {
           },
         }}
         id='Hello'
-        getOptionLabel={(book) => book.title}
+        freeSolo={true}
+        getOptionLabel={(book) =>
+          typeof book !== 'string' ? book.title : book
+        }
         options={books}
         noOptionsText='No results'
         isOptionEqualToValue={(option, value) => {
           return option.title === value.title
         }}
         renderOption={(props, book) => (
-          <Box component='li' {...props} key={book.title + Math.random()}>
+          <Box
+            component='li'
+            {...props}
+            key={book.title + Math.random()}
+            className='hover:bg-secondary/10 px-4 py-2.5'
+          >
             {/* {book.name} - Ahhh */}
             {/* TODO pass search card here */}
             {book.title}
@@ -61,12 +70,24 @@ const SearchInput = () => {
         )}
         renderInput={(params) => (
           <TextField
+            className='w-full'
             {...params}
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position='start'>
+                  {' '}
+                  <Search className='size-6 stroke-2 group-focus-within:text-primary' />{' '}
+                </InputAdornment>
+              ),
+              endAdornment: null,
+              className:
+                'bg-secondary-light/60 group-focus-within:bg-primary-contrastText',
+            }}
             placeholder='Search for books...'
             sx={{
               '& .MuiOutlinedInput-root': {
                 borderRadius: '50px',
-
                 legend: {
                   marginLeft: '30px',
                 },
@@ -82,7 +103,7 @@ const SearchInput = () => {
                 marginLeft: '20px',
                 paddingLeft: '10px',
                 paddingRight: 0,
-                background: 'white',
+                background: '#CFFAFA',
               },
             }}
           />

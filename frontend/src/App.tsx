@@ -4,7 +4,8 @@ import SearchInput from './components/search-input'
 import { GET_ALL_BOOKS } from './services/getBooks'
 import { Book } from './types/book'
 import Books from './components/books'
-import BackgroundSvg from './svg/clouds-svg'
+import CloudSvg from './svg/cloud-svg'
+import Cloud2Svg from './svg/cloud-small-svg'
 
 function App() {
   const { loading, error, data } = useQuery<Book[]>(GET_ALL_BOOKS)
@@ -14,14 +15,15 @@ function App() {
   if (error) return `Error! ${error.message}`
   return (
     <div className='bg-secondary-light/50'>
-      <BackgroundSvg className='fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
+      <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
+      <Cloud2Svg className='block md:hidden fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
 
-      <main className='w-full min-h-screen max-w-screen-lg container mx-auto '>
+      <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4'>
         <header className='py-4 w-full space-y-8'>
           <NavBar />
           <SearchInput />
         </header>{' '}
-        <section className='mt-10 z-[1000]'>
+        <section className='mt-10 z-[1000] w-full flex justify-center'>
           <Books
             books={[
               {

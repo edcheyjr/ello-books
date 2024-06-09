@@ -11,7 +11,7 @@ const SingleBookCard = ({
 }: Props) => {
   return (
     <article className='py-10 max-w-96 z-10'>
-      <div className='shadow-2xl px-2 py-2 rounded-3xl bg-primary-contrastText'>
+      <div className='shadow-2xl px-2 py-2 rounded-3xl bg-primary-contrastText border-2'>
         <div className='justify-center items-center flex'>
           <BookImageWithReadingProgress
             imageUrl={`${coverPhotoURL}`}
@@ -20,7 +20,7 @@ const SingleBookCard = ({
             progress={Math.floor(Math.random() * 100)} //maybe don't put this progress
           />
         </div>
-        <div className='w-full px-6 pb-2'>
+        <div className='w-full px-8 pb-2'>
           <Typography component='div' variant='h6' className='font-semibold'>
             {title}
           </Typography>

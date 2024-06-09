@@ -4,9 +4,9 @@ import TextField from '@mui/material/TextField'
 import { Book } from '../../types/book'
 import InputAdornment from '@mui/material/InputAdornment'
 import Search from '../../icons/Search'
-// type Props = {
-//   books: Book[]
-// }
+type Props = {
+  books: Book[]
+}
 const SearchInput = () => {
   const books: Book[] = [
     {
@@ -82,7 +82,7 @@ const SearchInput = () => {
               ),
               endAdornment: null,
               className:
-                'bg-secondary-light/60 group-focus-within:bg-primary-contrastText',
+                'bg-primary-light group-focus-within:bg-primary-contrastText',
             }}
             placeholder='Search for books...'
             sx={{
@@ -103,7 +103,6 @@ const SearchInput = () => {
                 marginLeft: '20px',
                 paddingLeft: '10px',
                 paddingRight: 0,
-                background: '#CFFAFA',
               },
             }}
           />

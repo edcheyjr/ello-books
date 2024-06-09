@@ -3,6 +3,8 @@ import NavBar from './components/nav-bar'
 import SearchInput from './components/search-input'
 import { GET_ALL_BOOKS } from './services/getBooks'
 import { Book } from './types/book'
+import Books from './components/books'
+import BackgroundSvg from './svg/clouds-svg'
 
 function App() {
   const { loading, error, data } = useQuery<Book[]>(GET_ALL_BOOKS)
@@ -11,11 +13,45 @@ function App() {
   if (loading) return 'Loading...'
   if (error) return `Error! ${error.message}`
   return (
-    <div className='w-full min-h-screen max-w-screen-lg container mx-auto'>
-      <header className='py-4 w-full space-y-8'>
-        <NavBar />
-        <SearchInput />
-      </header>{' '}
+    <div className='bg-secondary-light/50'>
+      <BackgroundSvg className='fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
+
+      <main className='w-full min-h-screen max-w-screen-lg container mx-auto '>
+        <header className='py-4 w-full space-y-8'>
+          <NavBar />
+          <SearchInput />
+        </header>{' '}
+        <section className='mt-10 z-[1000]'>
+          <Books
+            books={[
+              {
+                title: 'Curious Princess and the Enchanted Garden',
+                author: 'Reese Smith',
+                coverPhotoURL: 'assets/image2.webp',
+                readingLevel: 'H',
+              },
+              {
+                title: 'Clever Monster on the Wonder Island',
+                author: 'Jordan Jones',
+                coverPhotoURL: 'assets/image10.webp',
+                readingLevel: 'I',
+              },
+              {
+                title: 'Happy Knight and the Magic Spell',
+                author: 'Quinn Brown',
+                coverPhotoURL: 'assets/image10.webp',
+                readingLevel: 'I',
+              },
+              {
+                title: 'Happy Dragon and the Magic Spell',
+                author: 'Alex Jones',
+                coverPhotoURL: 'assets/image6.webp',
+                readingLevel: 'A',
+              },
+            ]}
+          />
+        </section>
+      </main>
     </div>
   )
 }

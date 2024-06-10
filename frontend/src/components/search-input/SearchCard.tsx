@@ -16,8 +16,12 @@ type Props = {
 }
 export default function SearchCard({ book, state, dispatch }: Props) {
   const [clicked, setClicked] = React.useState(false)
-  const addToReadingList = (book: Book) => {
-    dispatch({ type: 'ADD_TO_READING_LIST', book })
+  const toggleAddToList = (book: Book) => {
+    if (findIfExists(book, state.readingList)) {
+      dispatch({ type: 'REMOVE_FROM_READING_LIST', book })
+    } else {
+      dispatch({ type: 'ADD_TO_READING_LIST', book })
+    }
   }
 
   return (
@@ -67,7 +71,7 @@ export default function SearchCard({ book, state, dispatch }: Props) {
         className='group'
         onClick={(e) => {
           e.stopPropagation()
-          addToReadingList(book)
+          toggleAddToList(book)
         }}
         aria-label={'add to reading list'}
         sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}

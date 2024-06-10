@@ -45,8 +45,12 @@ npm run dev
   <img src="assets/Screenshot_2.png" alt="search" title="search of books" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
   <div style="margin-top:4px;">
-<h3>empty state</h3>
-  <img src="assets/Screenshot_3.png" alt="empty state" title="no books in reading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+    <h3>empty state</h3>
+    <img src="assets/Screenshot_3.png" alt="empty state" title="no books in reading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+  </div>
+   <div style="margin-top:4px;">
+      <h3>error state</h3>
+      <img src="assets/Screenshot_4.png" alt="error state" title="server error state" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
 </div>
 

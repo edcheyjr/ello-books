@@ -1,8 +1,8 @@
-import { Action, Book } from '../../types/book'
+import { Action, BookInReadingList } from '../../types/book'
 import SingleBookCard from './SingleBookCard'
 
 type Props = {
-  books: Book[]
+  books: BookInReadingList[]
   dispatch: React.Dispatch<Action>
 }
 
@@ -13,9 +13,8 @@ export default function Books({ books, dispatch }: Props) {
         <SingleBookCard
           key={index + book.title + Math.random()}
           book={book}
-          remove={() =>
-            dispatch({ type: 'REMOVE_FROM_READING_LIST', title: book.title })
-          }
+          books={books}
+          remove={() => dispatch({ type: 'REMOVE_FROM_READING_LIST', book })}
         />
       ))}
     </section>

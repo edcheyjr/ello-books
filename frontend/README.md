@@ -1,6 +1,6 @@
 # How to run
 
-the application will be opened in the following url: **`https:localhost:5173`**
+the application will be opened in the following url: [**`https:localhost:5173`**](https:localhost:5173)
 
 ensure you have [nodejs](https://nodejs.org/en) and [npm](https://www.npmjs.com/) installed in your machine also you have the [serve](https://github.com/edcheyjr/ello-books/backend) part running in you machine
 

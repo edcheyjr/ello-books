@@ -4,10 +4,13 @@ import TextField from '@mui/material/TextField'
 import { Book } from '../../types/book'
 import InputAdornment from '@mui/material/InputAdornment'
 import Search from '../../icons/Search'
+import SearchCard from './SearchCard'
+import { useState } from 'react'
 type Props = {
   books: Book[]
 }
 const SearchInput = () => {
+  const [popperOpened, setPoppoverOpened] = useState(false)
   const books: Book[] = [
     {
       title: 'Curious Princess and the Enchanted Garden',
@@ -34,10 +37,20 @@ const SearchInput = () => {
       readingLevel: 'A',
     },
   ]
+
   return (
     <div className='group'>
+      {/* Overlay */}
+      {popperOpened ? (
+        <div
+          className={`fixed bg-black/25 w-full h-full inset-0 z-40 transition-opacity ease-in-out backdrop-blur-[3px]`}
+        />
+      ) : null}
       <Autocomplete
+        className='z-50 scrollbar rounded-3xl scrollbar-track-secondary/10 scrollbar-thumb-secondary shadow-2xl'
         size='medium'
+        onOpen={() => setPoppoverOpened(true)}
+        onClose={() => setPoppoverOpened(false)}
         componentsProps={{
           paper: {
             sx: {
@@ -45,6 +58,12 @@ const SearchInput = () => {
               margin: 'auto',
             },
           },
+          popper: {
+            sx: {
+              boxShadow: 6,
+            },
+          },
+          popupIndicator: {},
         }}
         id='Hello'
         freeSolo={true}
@@ -61,16 +80,16 @@ const SearchInput = () => {
             component='li'
             {...props}
             key={book.title + Math.random()}
-            className='hover:bg-secondary/10 px-4 py-2.5'
+            className='px-4 py-2.5'
           >
             {/* {book.name} - Ahhh */}
             {/* TODO pass search card here */}
-            {book.title}
+            <SearchCard {...book} />
           </Box>
         )}
         renderInput={(params) => (
           <TextField
-            className='w-full'
+            className='w-full z-50'
             {...params}
             InputProps={{
               ...params.InputProps,

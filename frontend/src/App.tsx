@@ -14,7 +14,7 @@ function App() {
   if (loading) return 'Loading...'
   if (error) return `Error! ${error.message}`
   return (
-    <div className='bg-secondary-light/50'>
+    <div className='bg-secondary-light/55'>
       <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
       <Cloud2Svg className='block md:hidden fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
 
@@ -23,7 +23,7 @@ function App() {
           <NavBar />
           <SearchInput />
         </header>{' '}
-        <section className='mt-10 z-[1000] w-full flex justify-center'>
+        <section className='mt-10  w-full flex justify-center'>
           <Books
             books={[
               {

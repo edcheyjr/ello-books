@@ -10,6 +10,8 @@ import { useReducer } from 'react'
 import { reducer } from './utils/bookReducer'
 import EmptyState from './svg/empty-state'
 import Typography from '@mui/material/Typography'
+import Loader from './icons/Loader'
+import ServerErrorState from './svg/server-error-state/Svg'
 
 function App() {
   const initialState: State = {
@@ -19,8 +21,6 @@ function App() {
   const { loading, error, data } = useQuery<{ books: Book[] }>(GET_ALL_BOOKS)
   console.log('data', data)
   const [state, dispatch] = useReducer(reducer, initialState)
-  if (loading) return 'Loading...'
-  if (error) return `Error! ${error.message}`
   return (
     <div className='bg-secondary-light/55'>
       <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
@@ -35,31 +35,59 @@ function App() {
             books={data?.books || []}
           />
         </header>{' '}
-        <section className='mt-10  w-full flex justify-center'>
-          {state.readingList.length > 0 ? (
-            <Books dispatch={dispatch} books={state.readingList} />
-          ) : (
+        {loading ? (
+          <div className='w-full h-full flex items-center justify-center pt-12'>
+            <Loader className='animate-spin size-8 stroke-current text-secondary-dark' />
+          </div>
+        ) : error ? (
+          <section className='mt-10  w-full flex justify-center'>
             <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
-              <EmptyState className='w-36 h-auto' />
+              <ServerErrorState className='w-40 h-auto' />
               <div>
                 <Typography
                   component='div'
                   variant='h6'
                   className='font-semibold text-center'
                 >
-                  Empty List
+                  Server Error
                 </Typography>
                 <Typography
                   variant='subtitle1'
                   color='gray[400]'
                   component='div'
                 >
-                  search add books to you reading list.
+                  Oops🥲, something went wrong with the server.
                 </Typography>
               </div>
             </div>
-          )}
-        </section>
+          </section>
+        ) : (
+          <section className='mt-10  w-full flex justify-center'>
+            {state.readingList.length > 0 ? (
+              <Books dispatch={dispatch} books={state.readingList} />
+            ) : (
+              <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
+                <EmptyState className='w-40 h-auto' />
+                <div>
+                  <Typography
+                    component='div'
+                    variant='h6'
+                    className='font-semibold text-center'
+                  >
+                    Empty List
+                  </Typography>
+                  <Typography
+                    variant='subtitle1'
+                    color='gray[400]'
+                    component='div'
+                  >
+                    search add books to you reading list.
+                  </Typography>
+                </div>
+              </div>
+            )}
+          </section>
+        )}
       </main>
     </div>
   )

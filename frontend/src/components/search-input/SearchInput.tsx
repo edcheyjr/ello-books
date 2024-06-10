@@ -8,8 +8,9 @@ import SearchCard from './SearchCard'
 import { useState } from 'react'
 type Props = {
   books: Book[]
-  dispatch: React.Dispatch<Action>
   state: State
+
+  dispatch: React.Dispatch<Action>
 }
 const SearchInput = ({ books, state, dispatch }: Props) => {
   const [popperOpened, setPoppoverOpened] = useState(false)
@@ -57,8 +58,6 @@ const SearchInput = ({ books, state, dispatch }: Props) => {
             key={book.title + Math.random()}
             className='px-4 py-2'
           >
-            {/* {book.name} - Ahhh */}
-            {/* TODO pass search card here */}
             <SearchCard book={book} dispatch={dispatch} state={state} />
           </Box>
         )}

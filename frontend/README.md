@@ -1,8 +1,4 @@
-# What this project does
-
-this the UI for [node-api](https://github.com/edcheyj/node-api.git) and interacts with the api giving the user the abilty to add delete and view his or her notes.
-
-#### How to run locally (Assumptiion the api is being served at http://localhost:8080)
+#### How to run
 
 the application will be opened in the following url: **`https:localhost:5173`**
 
@@ -46,21 +42,9 @@ npm run dev
   <img src="images/success.png" alt="Sucessfull deleted a note" title="Sucessfull deleted a note" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
 </div>
 
-# Vue 3 + TypeScript + Vite
+# Would like to improve
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+[] add levels to ui
+[] filter by levels
+[] improve search ui and search filter
+[] add the concept of user student and teacher

@@ -1,43 +1,17 @@
 import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import { Book } from '../../types/book'
+import { Action, Book } from '../../types/book'
 import InputAdornment from '@mui/material/InputAdornment'
 import Search from '../../icons/Search'
 import SearchCard from './SearchCard'
 import { useState } from 'react'
 type Props = {
   books: Book[]
+  dispatch: React.Dispatch<Action>
 }
-const SearchInput = () => {
+const SearchInput = ({ books, dispatch }: Props) => {
   const [popperOpened, setPoppoverOpened] = useState(false)
-  const books: Book[] = [
-    {
-      title: 'Curious Princess and the Enchanted Garden',
-      author: 'Reese Smith',
-      coverPhotoURL: 'assets/image2.webp',
-      readingLevel: 'H',
-    },
-    {
-      title: 'Clever Monster on the Wonder Island',
-      author: 'Jordan Jones',
-      coverPhotoURL: 'assets/image10.webp',
-      readingLevel: 'I',
-    },
-    {
-      title: 'Happy Knight and the Magic Spell',
-      author: 'Quinn Brown',
-      coverPhotoURL: 'assets/image10.webp',
-      readingLevel: 'I',
-    },
-    {
-      title: 'Happy Dragon and the Magic Spell',
-      author: 'Alex Jones',
-      coverPhotoURL: 'assets/image6.webp',
-      readingLevel: 'A',
-    },
-  ]
-
   return (
     <div className='group'>
       {/* Overlay */}
@@ -84,7 +58,7 @@ const SearchInput = () => {
           >
             {/* {book.name} - Ahhh */}
             {/* TODO pass search card here */}
-            <SearchCard {...book} />
+            <SearchCard book={book} dispatch={dispatch} />
           </Box>
         )}
         renderInput={(params) => (

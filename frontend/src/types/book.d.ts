@@ -4,3 +4,15 @@ export interface Book {
   coverPhotoURL: string
   readingLevel: string
 }
+
+export interface BookInReadingList extends Book {
+  progress: number
+}
+
+export interface State {
+  readingList: BookInReadingList[]
+}
+
+export type Action =
+  | { type: 'ADD_TO_READING_LIST'; book: Book }
+  | { type: 'REMOVE_FROM_READING_LIST'; title: string }

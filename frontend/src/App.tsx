@@ -2,15 +2,23 @@ import { useQuery } from '@apollo/client'
 import NavBar from './components/nav-bar'
 import SearchInput from './components/search-input'
 import { GET_ALL_BOOKS } from './services/getBooks'
-import { Book } from './types/book'
+import { Book, State } from './types/book'
 import Books from './components/books'
 import CloudSvg from './svg/cloud-svg'
 import Cloud2Svg from './svg/cloud-small-svg'
+import { useReducer } from 'react'
+import { reducer } from './utils/bookReducer'
+import EmptyState from './svg/empty-state'
+import Typography from '@mui/material/Typography'
 
 function App() {
+  const initialState: State = {
+    readingList: [],
+  }
+
   const { loading, error, data } = useQuery<Book[]>(GET_ALL_BOOKS)
   console.log('data', data)
-
+  const [state, dispatch] = useReducer(reducer, initialState)
   if (loading) return 'Loading...'
   if (error) return `Error! ${error.message}`
   return (
@@ -21,37 +29,32 @@ function App() {
       <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4'>
         <header className='py-4 w-full space-y-8'>
           <NavBar />
-          <SearchInput />
+          <SearchInput dispatch={dispatch} books={data || []} />
         </header>{' '}
         <section className='mt-10  w-full flex justify-center'>
-          <Books
-            books={[
-              {
-                title: 'Curious Princess and the Enchanted Garden',
-                author: 'Reese Smith',
-                coverPhotoURL: 'assets/image2.webp',
-                readingLevel: 'H',
-              },
-              {
-                title: 'Clever Monster on the Wonder Island',
-                author: 'Jordan Jones',
-                coverPhotoURL: 'assets/image10.webp',
-                readingLevel: 'I',
-              },
-              {
-                title: 'Happy Knight and the Magic Spell',
-                author: 'Quinn Brown',
-                coverPhotoURL: 'assets/image10.webp',
-                readingLevel: 'I',
-              },
-              {
-                title: 'Happy Dragon and the Magic Spell',
-                author: 'Alex Jones',
-                coverPhotoURL: 'assets/image6.webp',
-                readingLevel: 'A',
-              },
-            ]}
-          />
+          {state.readingList.length > 0 ? (
+            <Books dispatch={dispatch} books={state.readingList} />
+          ) : (
+            <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
+              <EmptyState className='w-36 h-auto' />
+              <div>
+                <Typography
+                  component='div'
+                  variant='h6'
+                  className='font-semibold text-center'
+                >
+                  Empty List
+                </Typography>
+                <Typography
+                  variant='subtitle1'
+                  color='gray[400]'
+                  component='div'
+                >
+                  search add books to you reading list.
+                </Typography>
+              </div>
+            </div>
+          )}
         </section>
       </main>
     </div>

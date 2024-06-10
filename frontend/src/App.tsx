@@ -26,7 +26,7 @@ function App() {
       <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
       <Cloud2Svg className='block md:hidden fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
 
-      <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4'>
+      <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4 md:px-6 lg:px-10'>
         <header className='py-4 w-full space-y-8'>
           <NavBar />
           <SearchInput

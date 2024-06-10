@@ -1,16 +1,21 @@
+import React from 'react'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import { Action, Book } from '../../types/book'
+import { Action, Book, State } from '../../types/book'
 import BookImageWithReadingProgress from '../book-image-with-reading-progress'
-import BookmarkAdd from '../../icons/BookMark'
+import FavoriteIcon from '../../icons/Favorite'
+import { findIfExists } from '../../utils/findIfExists'
+
 type Props = {
   book: Book
+  state: State
   dispatch: React.Dispatch<Action>
 }
-export default function SearchCard({ book, dispatch }: Props) {
+export default function SearchCard({ book, state, dispatch }: Props) {
+  const [clicked, setClicked] = React.useState(false)
   const addToReadingList = (book: Book) => {
     dispatch({ type: 'ADD_TO_READING_LIST', book })
   }
@@ -57,12 +62,27 @@ export default function SearchCard({ book, dispatch }: Props) {
         </CardContent>
       </Box>
       <IconButton
+        onMouseDown={() => setClicked(true)}
+        onMouseUp={() => setClicked(false)}
         className='group'
-        onClick={() => addToReadingList(book)}
+        onClick={(e) => {
+          e.stopPropagation()
+          addToReadingList(book)
+        }}
         aria-label={'add to reading list'}
         sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
       >
-        <BookmarkAdd className='size-6 group-hover:-translate-y-0.5 ease-in-out duration-200' />
+        <FavoriteIcon
+          className={`size-6 transform ${
+            findIfExists(book, state.readingList)
+              ? 'fill-current stroke-current text-secondary'
+              : 'fill-none'
+          } ${
+            clicked
+              ? '-translate-y-1 duration-200'
+              : 'translate-x-0 duration-500'
+          } ease-in-out  `}
+        />
       </IconButton>
     </Card>
   )

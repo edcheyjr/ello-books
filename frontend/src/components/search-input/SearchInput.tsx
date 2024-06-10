@@ -1,7 +1,7 @@
 import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import { Action, Book } from '../../types/book'
+import { Action, Book, State } from '../../types/book'
 import InputAdornment from '@mui/material/InputAdornment'
 import Search from '../../icons/Search'
 import SearchCard from './SearchCard'
@@ -9,8 +9,9 @@ import { useState } from 'react'
 type Props = {
   books: Book[]
   dispatch: React.Dispatch<Action>
+  state: State
 }
-const SearchInput = ({ books, dispatch }: Props) => {
+const SearchInput = ({ books, state, dispatch }: Props) => {
   const [popperOpened, setPoppoverOpened] = useState(false)
   return (
     <div className='group'>
@@ -39,7 +40,7 @@ const SearchInput = ({ books, dispatch }: Props) => {
           },
           popupIndicator: {},
         }}
-        id='Hello'
+        id='search and add books to favorite'
         freeSolo={true}
         getOptionLabel={(book) =>
           typeof book !== 'string' ? book.title : book
@@ -54,11 +55,11 @@ const SearchInput = ({ books, dispatch }: Props) => {
             component='li'
             {...props}
             key={book.title + Math.random()}
-            className='px-4 py-2.5'
+            className='px-4 py-2'
           >
             {/* {book.name} - Ahhh */}
             {/* TODO pass search card here */}
-            <SearchCard book={book} dispatch={dispatch} />
+            <SearchCard book={book} dispatch={dispatch} state={state} />
           </Box>
         )}
         renderInput={(params) => (

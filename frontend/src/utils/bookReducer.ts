@@ -17,7 +17,9 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         readingList: state.readingList.filter(
-          (book) => book.title.trim() !== action.title.trim()
+          (book) =>
+            book.title.trim() !== action.book.title.trim() &&
+            book.author.trim() !== action.book.author.trim()
         ),
       }
     default:

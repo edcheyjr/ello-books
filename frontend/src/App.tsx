@@ -16,7 +16,7 @@ function App() {
     readingList: [],
   }
 
-  const { loading, error, data } = useQuery<Book[]>(GET_ALL_BOOKS)
+  const { loading, error, data } = useQuery<{ books: Book[] }>(GET_ALL_BOOKS)
   console.log('data', data)
   const [state, dispatch] = useReducer(reducer, initialState)
   if (loading) return 'Loading...'
@@ -29,7 +29,11 @@ function App() {
       <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4'>
         <header className='py-4 w-full space-y-8'>
           <NavBar />
-          <SearchInput dispatch={dispatch} books={data || []} />
+          <SearchInput
+            state={state}
+            dispatch={dispatch}
+            books={data?.books || []}
+          />
         </header>{' '}
         <section className='mt-10  w-full flex justify-center'>
           {state.readingList.length > 0 ? (

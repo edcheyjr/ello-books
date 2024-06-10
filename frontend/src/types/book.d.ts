@@ -15,4 +15,4 @@ export interface State {
 
 export type Action =
   | { type: 'ADD_TO_READING_LIST'; book: Book }
-  | { type: 'REMOVE_FROM_READING_LIST'; title: string }
+  | { type: 'REMOVE_FROM_READING_LIST'; book: Book }

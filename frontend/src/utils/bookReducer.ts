@@ -1,20 +1,25 @@
-import { Action, State } from '../types/book'
-export const ADD_TO_READING_LIST = 'ADD_TO_READING_LIST' as const
-export const REMOVE_FROM_READING_LIST = 'ADD_TO_READING_LIST' as const
+import { Action, State } from '../types/book' // Assuming you have Book type defined
 
+// Action types
+export const ADD_TO_READING_LIST = 'ADD_TO_READING_LIST' as const
+export const REMOVE_FROM_READING_LIST = 'REMOVE_FROM_READING_LIST' as const
+
+// Reducer function
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'ADD_TO_READING_LIST': {
-      return {
+    case ADD_TO_READING_LIST: {
+      const newState = {
         ...state,
         readingList: [
           ...state.readingList,
           { ...action.book, progress: Math.floor(Math.random() * 101) },
         ],
       }
+      saveState(newState)
+      return newState
     }
-    case 'REMOVE_FROM_READING_LIST':
-      return {
+    case REMOVE_FROM_READING_LIST: {
+      const newState = {
         ...state,
         readingList: state.readingList.filter(
           (book) =>
@@ -22,7 +27,33 @@ export const reducer = (state: State, action: Action): State => {
             book.author.trim() !== action.book.author.trim()
         ),
       }
+      saveState(newState)
+      return newState
+    }
     default:
       return state
+  }
+}
+// Function to save state to localStorage
+const saveState = (state: State) => {
+  try {
+    const serializedState = JSON.stringify(state)
+    localStorage.setItem('readingListState', serializedState)
+  } catch (err) {
+    console.error('Error saving state to localStorage:', err)
+  }
+}
+
+// Function to load state from localStorage
+export const loadState = (): State | undefined => {
+  try {
+    const serializedState = localStorage.getItem('readingListState')
+    if (serializedState === null) {
+      return undefined
+    }
+    return JSON.parse(serializedState)
+  } catch (err) {
+    console.error('Error loading state from localStorage:', err)
+    return undefined
   }
 }

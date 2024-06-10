@@ -7,14 +7,14 @@ import Books from './components/books'
 import CloudSvg from './svg/cloud-svg'
 import Cloud2Svg from './svg/cloud-small-svg'
 import { useReducer } from 'react'
-import { reducer } from './utils/bookReducer'
+import { loadState, reducer } from './utils/bookReducer'
 import EmptyState from './svg/empty-state'
 import Typography from '@mui/material/Typography'
 import Loader from './icons/Loader'
 import ServerErrorState from './svg/server-error-state/Svg'
 
 function App() {
-  const initialState: State = {
+  const initialState: State = loadState() || {
     readingList: [],
   }
 

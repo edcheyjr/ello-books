@@ -74,6 +74,7 @@ export default function SearchCard({ book, state, dispatch }: Props) {
           e.stopPropagation()
           toggleAddToList(book)
         }}
+        title={findIfExists(book, state.readingList) ? 'remove' : 'add'}
         aria-label={'add to reading list'}
         sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
       >

@@ -42,6 +42,7 @@ const SingleBookCard: React.FC<Props> = ({ book, remove, books }: Props) => {
           onMouseUp={() => setClicked(false)}
           onClick={remove}
           className='group'
+          title={findIfExists(book, books) ? 'remove' : 'add'}
           aria-label={'add to reading list'}
           sx={{ position: 'absolute', bottom: '0.875rem', right: '0.5rem' }}
         >

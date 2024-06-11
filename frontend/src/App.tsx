@@ -68,9 +68,12 @@ function App() {
               <p className='z-10 px-1.5 py-0.5 mr-2 rounded bg-secondary-dark text-primary-contrastText'>
                 Filter levels
               </p>
-              {alphabetArray().map((item) => {
+              {alphabetArray().map((item, index) => {
                 return (
-                  <button className='z-10 group text-secondary-dark hover:bg-primary-light p-1 rounded duration-200 ease-in-out font-semibold'>
+                  <button
+                    key={item + index}
+                    className='z-10 group text-secondary-dark hover:bg-primary-light p-1 rounded duration-200 ease-in-out font-semibold'
+                  >
                     <span className='group-hover:-translate-y-2 uppercase transform'>
                       {item}
                     </span>

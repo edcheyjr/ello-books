@@ -1,4 +1,3 @@
-import React from 'react'
 import Down from '../icons/Down'
 // type Props = {}
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Logo = () => {
   return (
     <div className='size-12 lg:size-14'>

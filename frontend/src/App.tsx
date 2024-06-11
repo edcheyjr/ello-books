@@ -20,12 +20,11 @@ function App() {
   }
 
   const { loading, error, data } = useQuery<{ books: Book[] }>(GET_ALL_BOOKS)
-  console.log('data', data)
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
-    <div className='bg-secondary-light/55'>
+    <div className='bg-secondary-light/55 overflow-x-hidden'>
       <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
-      <Cloud2Svg className='block md:hidden fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
+      <Cloud2Svg className='block md:hidden fixed top-[20%] bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
 
       <main className='w-full min-h-screen max-w-screen-lg container mx-auto px-4 md:px-6 lg:px-10'>
         <header className='py-4 w-full space-y-8'>

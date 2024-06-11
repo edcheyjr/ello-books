@@ -10,7 +10,7 @@ const UserIcon = () => {
     >
       <Down className='size-4 text-primary-dark' />
       <img
-        src='/public/ello_elephant.png'
+        src='ello_elephant.png'
         alt='user'
         className='h-full group-hover:rotate-2 -rotate-1 duration-200 ease-in-out'
       />

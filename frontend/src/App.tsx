@@ -83,8 +83,8 @@ function App() {
           </section>
         ) : (
           <section className='mt-6 w-full'>
-            <div className='flex flex-wrap items-center gap-3 mb-3 px-2'>
-              <p className='z-10 px-1.5 py-0.5 mr-2 rounded bg-secondary-dark text-primary-contrastText'>
+            <div className='flex flex-wrap items-center gap-1.5 mb-3 px-2'>
+              <p className='z-10 px-1.5 py-0.5 rounded bg-secondary-dark text-primary-contrastText'>
                 Filter levels
               </p>
               {alphabetArray().map((item, index) => {
@@ -92,13 +92,11 @@ function App() {
                   <button
                     onClick={() => handleToggleFilter(item)}
                     key={item + index}
-                    className={`z-10 group text-secondary-dark hover:bg-primary-light/60 ${
+                    className={`z-10 group text-secondary-dark border border-transparent hover:border-primary ${
                       state.activeFilter == item && 'bg-primary-light '
-                    } p-1 rounded duration-200 ease-in-out font-semibold`}
+                    } p-1.5 rounded duration-200 ease-in-out font-semibold`}
                   >
-                    <span className='group-hover:-translate-y-2 transform'>
-                      {item}
-                    </span>
+                    {item}
                   </button>
                 )
               })}

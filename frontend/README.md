@@ -59,8 +59,7 @@ npm run dev
 
 # Would like to improve
 
-- [ ] add levels to ui
-- [ ] filter by levels
+- [x] filter by levels
 - [ ] improve search ui and search filter
 - [ ] add the concept of user student and teacher
 - [ ] customize search scrollbar

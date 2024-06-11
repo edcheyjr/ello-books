@@ -53,6 +53,7 @@ export default function SearchCard({ book, state, dispatch }: Props) {
         }}
       >
         <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography variant='overline'>level {book.readingLevel}</Typography>
           <Typography component='div' variant='h6' className='font-semibold'>
             {book.title}
           </Typography>

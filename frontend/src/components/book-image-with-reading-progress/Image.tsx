@@ -4,7 +4,7 @@ type Props = {
   desc?: string
   progress?: number
   className: string
-  bookLevel: string
+  bookLevel?: string
   bookSize?: 'sm' | 'default'
 }
 
@@ -49,7 +49,7 @@ const Image = ({
         </div>
       )}
       {bookLevel ? (
-        <div className='px-1 py-0.5 font-black border border-primary-dark rounded absolute bottom-7 right-2 bg-primary-light text-primary-dark'>
+        <div className='px-1 py-0.5 font-black border border-b-[1.5px] border-r-[1.5px] border-primary-dark rounded absolute bottom-7 right-2 bg-primary-light text-primary-dark'>
           {bookLevel}
         </div>
       ) : null}

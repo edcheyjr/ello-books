@@ -47,7 +47,7 @@ npm run dev
   </div>
    <div style="margin-top:4px;">
       <h3>filter by level</h3>
-      <img src="images/Screenshot_5.png" alt="filter by level image" title="filter by level image" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+      <img src="images/Screenshot_5.1.png" alt="filter by level image" title="filter by level image" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
   <div style="margin-top:4px;">
     <h3>empty state</h3>

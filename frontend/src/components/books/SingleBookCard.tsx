@@ -21,6 +21,7 @@ const SingleBookCard: React.FC<Props> = ({ book, remove, books }: Props) => {
             imageUrl={`${book.coverPhotoURL}`}
             className='w-4/5 -translate-y-6 hover:-translate-y-2 duration-300 ease-in-out'
             desc={book.title}
+            bookLevel={book.readingLevel}
             progress={book.progress} //maybe don't put this progress
           />
         </div>

@@ -18,13 +18,13 @@ const Image = ({
 }: Props) => {
   return (
     <div
+      title={`${Math.floor(progress)}% complete`}
       className={`relative h-auto rounded-l-xl ${
         bookSize == 'default' ? 'shadow-xl' : 'shadow'
       } shadow-primary-dark/30 ${className} border`}
     >
       <img
         src={imageUrl}
-        title={`${Math.floor(progress)}% complete`}
         alt={desc}
         className={'size-full rounded-l-xl border-r border-primary-dark '}
         sizes='(max-width: 600px) 500px, (max-width: 1200px) 1000px, 2000px'

@@ -33,6 +33,15 @@ npm run dev
 
 ```
 
+or alternative for build preview run
+
+```
+npm install
+npm run build
+npm run preview
+
+```
+
 # The App Interface
 
 <div style="display: flex; justify-content: space-between; flex-direction:column;">

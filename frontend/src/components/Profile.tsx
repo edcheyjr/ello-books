@@ -6,7 +6,7 @@ const UserIcon = () => {
   // TODO ADD DROPDOWN TO SELECT BETWEEN TEACHER AND STUDENT
   return (
     <button
-      className='h-16 p-1 flex space-x-1 rounded-full items-center justify-center group'
+      className='h-12 lg:h-16 p-1 flex space-x-1 rounded-full items-center justify-center group'
       onClick={() => console.log('Todo')}
     >
       <Down className='size-4 text-primary-dark' />

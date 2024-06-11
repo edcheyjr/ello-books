@@ -38,24 +38,24 @@ npm run dev
 <div style="display: flex; justify-content: space-between; flex-direction:column;">
 <div style="margin-top:4px;">
 <h3>reading list ui</h3>
-  <img src="assets/images/Screenshot_1.1.png" alt="books" title="nreading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
-  <!-- <img src="assets/images/Screenshot_1.0.png" alt="books" title="nreading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;"> -->
+  <img src="images/Screenshot_1.2.png" alt="books" title="nreading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+  <!-- <img src="images/Screenshot_1.0.png" alt="books" title="nreading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;"> -->
 </div>
 <div style="margin-top:4px;">
 <h3>search ui</h3>
-  <img src="assets/images/Screenshot_2.png" alt="search" title="search of books" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+  <img src="images/Screenshot_2.2.png" alt="search" title="search of books" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
    <div style="margin-top:4px;">
       <h3>filter by level</h3>
-      <img src="assets/images/Screenshot_5.png" alt="filter by level image" title="filter by level image" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+      <img src="images/Screenshot_5.png" alt="filter by level image" title="filter by level image" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
   <div style="margin-top:4px;">
     <h3>empty state</h3>
-    <img src="assets/images/Screenshot_3.png" alt="empty state" title="no books in reading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+    <img src="images/Screenshot_3.png" alt="empty state" title="no books in reading list" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
    <div style="margin-top:4px;">
       <h3>error state</h3>
-      <img src="assets/images/Screenshot_4.png" alt="error state" title="server error state" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
+      <img src="images/Screenshot_4.png" alt="error state" title="server error state" style="max-width: 100%; max-height: 100%; width: auto; height: auto; margin-right: 10px;">
   </div>
 </div>
 

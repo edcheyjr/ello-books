@@ -1,13 +1,9 @@
 import { Action, State } from '../types/book' // Assuming you have Book type defined
 
-// Action types
-export const ADD_TO_READING_LIST = 'ADD_TO_READING_LIST' as const
-export const REMOVE_FROM_READING_LIST = 'REMOVE_FROM_READING_LIST' as const
-
 // Reducer function
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case ADD_TO_READING_LIST: {
+    case 'ADD_TO_READING_LIST': {
       const newState = {
         ...state,
         readingList: [
@@ -18,8 +14,8 @@ export const reducer = (state: State, action: Action): State => {
       saveState(newState)
       return newState
     }
-    case REMOVE_FROM_READING_LIST: {
-      const newState = {
+    case 'REMOVE_FROM_READING_LIST': {
+      const newState: State = {
         ...state,
         readingList: state.readingList.filter(
           (book) =>
@@ -30,6 +26,24 @@ export const reducer = (state: State, action: Action): State => {
       saveState(newState)
       return newState
     }
+    case 'FILTER_READING_LIST': {
+      const newState: State = {
+        ...state,
+        activeFilter: action.bookLevel.toUpperCase(),
+      }
+      saveState(newState)
+      return newState
+    }
+
+    case 'REMOVE_FILTERS': {
+      const newState: State = {
+        ...state,
+        activeFilter: null,
+      }
+      saveState(newState)
+      return newState
+    }
+
     default:
       return state
   }

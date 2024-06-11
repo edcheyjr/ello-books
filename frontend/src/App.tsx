@@ -16,11 +16,31 @@ import { alphabetArray } from './utils/alphabetArray'
 
 function App() {
   const initialState: State = loadState() || {
+    activeFilter: null,
     readingList: [],
   }
 
   const { loading, error, data } = useQuery<{ books: Book[] }>(GET_ALL_BOOKS)
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  const handleToggleFilter = (level: string) => {
+    if (state.activeFilter != level) {
+      dispatch({ type: 'FILTER_READING_LIST', bookLevel: level }) // set this as the active filter
+    } else {
+      dispatch({ type: 'REMOVE_FILTERS' }) //Remove  this filter
+    }
+  }
+
+  const filteredBooks = () => {
+    if (state.activeFilter) {
+      return state.readingList
+        .filter((book) => book.readingLevel === state.activeFilter)
+        .reverse()
+    } else {
+      // If there's no active filter, return the original list
+      return state.readingList.slice().reverse()
+    }
+  }
   return (
     <div className='bg-secondary-light/55 overflow-x-hidden'>
       <CloudSvg className='hidden md:block fixed top-1/4 bottom-0 right-0 left-0 w-screen h-auto fill-current text-white ' />
@@ -70,10 +90,13 @@ function App() {
               {alphabetArray().map((item, index) => {
                 return (
                   <button
+                    onClick={() => handleToggleFilter(item)}
                     key={item + index}
-                    className='z-10 group text-secondary-dark hover:bg-primary-light p-1 rounded duration-200 ease-in-out font-semibold'
+                    className={`z-10 group text-secondary-dark hover:bg-primary-light/60 ${
+                      state.activeFilter == item && 'bg-primary-light '
+                    } p-1 rounded duration-200 ease-in-out font-semibold`}
                   >
-                    <span className='group-hover:-translate-y-2 uppercase transform'>
+                    <span className='group-hover:-translate-y-2 transform'>
                       {item}
                     </span>
                   </button>
@@ -81,11 +104,8 @@ function App() {
               })}
             </div>
             <div className='flex justify-center'>
-              {state.readingList.length > 0 ? (
-                <Books
-                  dispatch={dispatch}
-                  books={state.readingList.reverse()}
-                />
+              {filteredBooks().length > 0 ? (
+                <Books dispatch={dispatch} books={filteredBooks()} />
               ) : (
                 <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
                   <EmptyState className='w-40 h-auto' />

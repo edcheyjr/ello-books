@@ -12,6 +12,7 @@ import EmptyState from './svg/empty-state'
 import Typography from '@mui/material/Typography'
 import Loader from './icons/Loader'
 import ServerErrorState from './svg/server-error-state/Svg'
+import { alphabetArray } from './utils/alphabetArray'
 
 function App() {
   const initialState: State = loadState() || {
@@ -62,30 +63,49 @@ function App() {
             </div>
           </section>
         ) : (
-          <section className='mt-10  w-full flex justify-center'>
-            {state.readingList.length > 0 ? (
-              <Books dispatch={dispatch} books={state.readingList} />
-            ) : (
-              <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
-                <EmptyState className='w-40 h-auto' />
-                <div>
-                  <Typography
-                    component='div'
-                    variant='h6'
-                    className='font-semibold text-center'
-                  >
-                    Empty List
-                  </Typography>
-                  <Typography
-                    variant='subtitle1'
-                    color='gray[400]'
-                    component='div'
-                  >
-                    search add books to you reading list.
-                  </Typography>
+          <section className='mt-6 w-full'>
+            <div className='flex flex-wrap items-center gap-3 mb-3 px-2'>
+              <p className='z-10 px-1.5 py-0.5 mr-2 rounded bg-secondary-dark text-primary-contrastText'>
+                Filter levels
+              </p>
+              {alphabetArray().map((item) => {
+                return (
+                  <button className='z-10 group text-secondary-dark hover:bg-primary-light p-1 rounded duration-200 ease-in-out font-semibold'>
+                    <span className='group-hover:-translate-y-2 uppercase transform'>
+                      {item}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+            <div className='flex justify-center'>
+              {state.readingList.length > 0 ? (
+                <Books
+                  dispatch={dispatch}
+                  books={state.readingList.reverse()}
+                />
+              ) : (
+                <div className='w-full flex flex-col justify-center items-center  space-y-6 z-10'>
+                  <EmptyState className='w-40 h-auto' />
+                  <div>
+                    <Typography
+                      component='div'
+                      variant='h6'
+                      className='font-semibold text-center'
+                    >
+                      Empty List
+                    </Typography>
+                    <Typography
+                      variant='subtitle1'
+                      color='gray[400]'
+                      component='div'
+                    >
+                      search add books to you reading list.
+                    </Typography>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </section>
         )}
       </main>
